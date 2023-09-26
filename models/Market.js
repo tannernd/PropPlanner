@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Market extends Model {}
+class Market extends Model { }
 
 Market.init(
   {
@@ -11,28 +11,27 @@ Market.init(
       autoIncrement: true
     },
     user_id: {
-    type: DataTypes.INTEGER
+      type: DataTypes.INTEGER
     },
-    prop_id: {
-    type: DataTypes.INTEGER
+    property_id: {
+      type: DataTypes.INTEGER
     },
     appreciation: {
-    type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL
     },
     annual_rent_increase: {
-    type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL
     },
     annual_expense_increase: {
-    type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL
     },
     vacancy: {
-    type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL
     }
   },
   {
     sequelize,
     timestamps: true,
-    freezeTableName: true,
     underscored: true,
     modelName: 'market'
   }

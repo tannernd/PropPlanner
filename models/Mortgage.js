@@ -1,44 +1,43 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Mortage extends Model {}
+class Mortgage extends Model { }
 
-Mortage.init(
+Mortgage.init(
   {
-    mort_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
     user_id: {
-    type: DataTypes.INTEGER
+      type: DataTypes.INTEGER
     },
-    prop_id: {
-    type: DataTypes.INTEGER
+    property_id: {
+      type: DataTypes.INTEGER
     },
-    loan_amt: {
-    type: DataTypes.DECIMAL
+    loan_amount: {
+      type: DataTypes.DECIMAL
     },
     rate: {
-    type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL
     },
     term: {
-    type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL
     },
     payment: {
-    type: DataTypes.DECIMAL
+      type: DataTypes.DECIMAL
     },
     lender: {
-    type: DataTypes.STRING
+      type: DataTypes.STRING
     }
   },
   {
     sequelize,
     timestamps: true,
-    freezeTableName: true,
     underscored: true,
-    modelName: 'mortage'
+    modelName: 'mortgage'
   }
 );
 
-module.exports = Mortage;
+module.exports = Mortgage;

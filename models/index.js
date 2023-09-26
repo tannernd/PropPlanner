@@ -1,108 +1,68 @@
-const Users = require('./Users');
-const Expenses = require('./Expenses');
-const Financials = require('./Financials');
+const User = require('./User');
+const Expense = require('./Expense');
+const Financial = require('./Financial');
 const Income = require('./Income');
 const Market = require('./Market');
-const Mortage = require('./Mortgage');
+const Mortgage = require('./Mortgage');
 const Property = require('./Property');
 
-Property.hasMany(Users, {
+//#region  -- pulling in a user_id foreign key to all related objects
+User.hasMany(Property, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
 
-Users.belongsTo(Property, {
+User.hasMany(Mortgage, {
   foreignKey: 'user_id',
+  onDelete: 'CASCADE',
 });
 
-Mortage.hasMany(Users, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
-  });
-  
-Users.belongsTo(Mortage, {
-foreignKey: 'user_id',
+User.hasMany(Market, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
 });
 
-Market.hasMany(Users, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
-  });
-  
-Users.belongsTo(Market, {
-foreignKey: 'user_id',
+User.hasMany(Income, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
 });
 
-Income.hasMany(Users, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
-  });
-  
-Users.belongsTo(Income, {
-foreignKey: 'user_id',
+User.hasMany(Financial, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
 });
 
-Financials.hasMany(Users, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
-  });
-  
-Users.belongsTo(Financials, {
-foreignKey: 'user_id',
+User.hasMany(Expense, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
 });
+//#endregion
 
-Expenses.hasMany(Users, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
-  });
-  
-Users.belongsTo(Expenses, {
-foreignKey: 'user_id',
-});
-
-Property.hasMany(Mortage, {
-    foreignKey: 'prop_id',
-    onDelete: 'CASCADE',
-  });
-  
-Mortage.belongsTo(Property, {
-foreignKey: 'prop_id',
+//#region -- pulling in a property_id foreign key to all related objects
+Property.hasMany(Mortgage, {
+  foreignKey: 'property_id',
+  onDelete: 'CASCADE',
 });
 
 Property.hasMany(Market, {
-    foreignKey: 'prop_id',
-    onDelete: 'CASCADE',
-  });
-  
-Market.belongsTo(Property, {
-foreignKey: 'prop_id',
+  foreignKey: 'property_id',
+  onDelete: 'CASCADE',
 });
 
 Property.hasMany(Income, {
-    foreignKey: 'prop_id',
-    onDelete: 'CASCADE',
-  });
-  
-Income.belongsTo(Property, {
-foreignKey: 'prop_id',
+  foreignKey: 'property_id',
+  onDelete: 'CASCADE',
 });
 
-Property.hasMany(Financials, {
-    foreignKey: 'prop_id',
-    onDelete: 'CASCADE',
-  });
-  
-Financials.belongsTo(Financials, {
-foreignKey: 'prop_id',
+Property.hasMany(Financial, {
+  foreignKey: 'property_id',
+  onDelete: 'CASCADE',
 });
 
-Property.hasMany(Expenses, {
-    foreignKey: 'prop_id',
-    onDelete: 'CASCADE',
-  });
-  
-Expenses.belongsTo(Property, {
-foreignKey: 'prop_id',
+Property.hasMany(Expense, {
+  foreignKey: 'property_id',
+  onDelete: 'CASCADE',
 });
+//#endregion
 
-module.exports = { Users, Expenses, Financials, Income, Market, Mortage, Property };
+module.exports = { User, Expense, Financial, Income, Market, Mortgage, Property };

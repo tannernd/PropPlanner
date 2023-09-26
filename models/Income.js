@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Income extends Model {}
+class Income extends Model { }
 
 Income.init(
   {
-    inc_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -13,23 +13,22 @@ Income.init(
     user_id: {
       type: DataTypes.INTEGER
     },
-    prop_id: {
-        type: DataTypes.INTEGER
-      },
-    income_amt: {
-    type: DataTypes.DECIMAL
+    property_id: {
+      type: DataTypes.INTEGER
     },
-    income_desc: {
+    amount: {
+      type: DataTypes.DECIMAL
+    },
+    description: {
       type: DataTypes.STRING
     },
-    income_other_desc: {
+    other_description: {
       type: DataTypes.STRING
     }
   },
   {
     sequelize,
     timestamps: true,
-    freezeTableName: true,
     underscored: true,
     modelName: 'income'
   }
