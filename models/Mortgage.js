@@ -11,10 +11,18 @@ Mortgage.init(
       autoIncrement: true
     },
     user_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'users',
+        key: 'id',
+      },
     },
     property_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'property',
+        key: 'id',
+      },
     },
     loan_amount: {
       type: DataTypes.DECIMAL

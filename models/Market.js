@@ -11,10 +11,18 @@ Market.init(
       autoIncrement: true
     },
     user_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'users',
+        key: 'id',
+      },
     },
     property_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'property',
+        key: 'property_id',
+      },
     },
     appreciation: {
       type: DataTypes.DECIMAL
