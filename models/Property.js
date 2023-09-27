@@ -11,7 +11,11 @@ Property.init(
       autoIncrement: true
     },
     user_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'users',
+        key: 'id',
+      },
     },
     prop_name: {
       type: DataTypes.STRING
