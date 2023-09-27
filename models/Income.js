@@ -11,18 +11,10 @@ Income.init(
       autoIncrement: true
     },
     user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'users',
-        key: 'id',
-      },
+      type: DataTypes.INTEGER
     },
     property_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'property',
-        key: 'id',
-      },
+      type: DataTypes.INTEGER
     },
     income_amt: {
       type: DataTypes.DECIMAL
