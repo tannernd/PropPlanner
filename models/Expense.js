@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Mortgage extends Model { }
+class Expense extends Model { }
 
-Mortgage.init(
+Expense.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -16,19 +16,13 @@ Mortgage.init(
     property_id: {
       type: DataTypes.INTEGER
     },
-    loan_amount: {
+    amount: {
       type: DataTypes.DECIMAL
     },
-    rate: {
-      type: DataTypes.DECIMAL
+    description: {
+      type: DataTypes.STRING
     },
-    term: {
-      type: DataTypes.DECIMAL
-    },
-    payment: {
-      type: DataTypes.DECIMAL
-    },
-    lender: {
+    other_description: {
       type: DataTypes.STRING
     }
   },
@@ -36,8 +30,8 @@ Mortgage.init(
     sequelize,
     timestamps: true,
     underscored: true,
-    modelName: 'mortgage'
+    modelName: 'expense'
   }
 );
 
-module.exports = Mortgage;
+module.exports = Expense;

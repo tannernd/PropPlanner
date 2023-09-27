@@ -1,66 +1,61 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Property extends Model {}
+class Property extends Model { }
 
 Property.init(
   {
-    prop_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
     user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'users',
-        key: 'id',
-      },
-    },
-    prop_name: {
-      type: DataTypes.STRING
-    },
-    prop_desc: {
-      type: DataTypes.STRING
-    },
-    prop_type: {
-      type: DataTypes.STRING
-    },
-    prop_address1: {
-      type: DataTypes.STRING
-    },
-    prop_address2: {
-      type: DataTypes.STRING
-    },
-    prop_city: {
-      type: DataTypes.STRING
-    },
-    prop_state: {
-      type: DataTypes.STRING
-    },
-    prop_zip: {
-      type: DataTypes.STRING
-    },
-    prop_year: {
       type: DataTypes.INTEGER
     },
-    prop_status: {
+    name: {
+      type: DataTypes.STRING
+    },
+    description: {
+      type: DataTypes.STRING
+    },
+    type: {
+      type: DataTypes.STRING
+    },
+    address1: {
+      type: DataTypes.STRING
+    },
+    address2: {
+      type: DataTypes.STRING
+    },
+    city: {
+      type: DataTypes.STRING
+    },
+    state: {
+      type: DataTypes.STRING
+    },
+    zip: {
+      type: DataTypes.STRING
+    },
+    year: {
       type: DataTypes.INTEGER
     },
-    prop_totalunits: {
+    status: {
       type: DataTypes.INTEGER
     },
-    prop_purchase_date: {
+    total_units: {
+      type: DataTypes.INTEGER
+    },
+    purchase_date: {
       type: DataTypes.DATE
     },
-    prop_sell_date: {
+    sell_date: {
       type: DataTypes.DATE
     }
   },
   {
     sequelize,
     timestamps: true,
-    freezeTableName: true,
     underscored: true,
     modelName: 'property'
   }
