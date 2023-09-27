@@ -225,7 +225,7 @@ router.get('/:id', (async (req, res) => {
         const property = await Property.findByPk(req.params.id,{
             include: [{ model: Expenses }, { model: Financials }, { model: Income }, { model: Market }, { model: Mortgage }]});
         const propertyData = property.get({plain:true})
-
+        
         res.json(propertyData);
     } catch (err) {
         res.status(500).json(err);
