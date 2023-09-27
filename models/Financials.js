@@ -11,10 +11,18 @@ Financials.init(
       autoIncrement: true
     },
     user_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'users',
+        key: 'id',
+      },
     },
     prop_id: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'property',
+          key: 'prop_id',
+        },
     },
     offer_amt: {
     type: DataTypes.DECIMAL

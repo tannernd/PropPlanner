@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Mortage extends Model {}
+class Mortgage extends Model {}
 
-Mortage.init(
+Mortgage.init(
   {
     mort_id: {
       type: DataTypes.INTEGER,
@@ -11,10 +11,18 @@ Mortage.init(
       autoIncrement: true
     },
     user_id: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'users',
+      key: 'id',
+    },
     },
     prop_id: {
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'property',
+      key: 'prop_id',
+    },
     },
     loan_amt: {
     type: DataTypes.DECIMAL
@@ -37,8 +45,8 @@ Mortage.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'mortage'
+    modelName: 'mortgage'
   }
 );
 
-module.exports = Mortage;
+module.exports = Mortgage;

@@ -3,7 +3,7 @@ const Expenses = require('./Expenses');
 const Financials = require('./Financials');
 const Income = require('./Income');
 const Market = require('./Market');
-const Mortage = require('./Mortgage');
+const Mortgage = require('./Mortgage');
 const Property = require('./Property');
 
 Property.hasMany(Users, {
@@ -15,12 +15,12 @@ Users.belongsTo(Property, {
   foreignKey: 'user_id',
 });
 
-Mortage.hasMany(Users, {
+Mortgage.hasMany(Users, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
   });
   
-Users.belongsTo(Mortage, {
+Users.belongsTo(Mortgage, {
 foreignKey: 'user_id',
 });
 
@@ -60,12 +60,12 @@ Users.belongsTo(Expenses, {
 foreignKey: 'user_id',
 });
 
-Property.hasMany(Mortage, {
+Property.hasMany(Mortgage, {
     foreignKey: 'prop_id',
     onDelete: 'CASCADE',
   });
   
-Mortage.belongsTo(Property, {
+Mortgage.belongsTo(Property, {
 foreignKey: 'prop_id',
 });
 
@@ -105,4 +105,4 @@ Expenses.belongsTo(Property, {
 foreignKey: 'prop_id',
 });
 
-module.exports = { Users, Expenses, Financials, Income, Market, Mortage, Property };
+module.exports = { Users, Expenses, Financials, Income, Market, Mortgage, Property };
