@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Property extends Model {}
+class Property extends Model { }
 
 Property.init(
   {
-    prop_id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -17,50 +17,49 @@ Property.init(
         key: 'id',
       },
     },
-    prop_name: {
+    name: {
       type: DataTypes.STRING
     },
-    prop_desc: {
+    description: {
       type: DataTypes.STRING
     },
-    prop_type: {
+    type: {
       type: DataTypes.STRING
     },
-    prop_address1: {
+    address1: {
       type: DataTypes.STRING
     },
-    prop_address2: {
+    address2: {
       type: DataTypes.STRING
     },
-    prop_city: {
+    city: {
       type: DataTypes.STRING
     },
-    prop_state: {
+    state: {
       type: DataTypes.STRING
     },
-    prop_zip: {
+    zip: {
       type: DataTypes.STRING
     },
-    prop_year: {
+    year: {
       type: DataTypes.INTEGER
     },
-    prop_status: {
+    status: {
       type: DataTypes.INTEGER
     },
-    prop_totalunits: {
+    total_units: {
       type: DataTypes.INTEGER
     },
-    prop_purchase_date: {
+    purchase_date: {
       type: DataTypes.DATE
     },
-    prop_sell_date: {
+    sell_date: {
       type: DataTypes.DATE
     }
   },
   {
     sequelize,
     timestamps: true,
-    freezeTableName: true,
     underscored: true,
     modelName: 'property'
   }

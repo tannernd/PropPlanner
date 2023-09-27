@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Financials extends Model {}
+class Financial extends Model { }
 
-Financials.init(
+Financial.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -17,21 +17,21 @@ Financials.init(
         key: 'id',
       },
     },
-    prop_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'property',
-          key: 'prop_id',
-        },
+    property_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'property',
+        key: 'id',
+      },
     },
-    offer_amt: {
-    type: DataTypes.DECIMAL
+    offer_amount: {
+      type: DataTypes.DECIMAL
     },
-    prop_value: {
-    type: DataTypes.DECIMAL
+    property_value: {
+      type: DataTypes.DECIMAL
     },
-    closing_amt: {
-    type: DataTypes.DECIMAL
+    closing_amount: {
+      type: DataTypes.DECIMAL
     },
     notes: {
       type: DataTypes.TEXT
@@ -40,10 +40,9 @@ Financials.init(
   {
     sequelize,
     timestamps: true,
-    freezeTableName: true,
     underscored: true,
-    modelName: 'financials'
+    modelName: 'financial'
   }
 );
 
-module.exports = Financials;
+module.exports = Financial;
