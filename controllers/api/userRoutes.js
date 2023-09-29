@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
-const withAuth = require('../../utils/auth')
+const withAuth = require('../../utils/auth');
 
 //#region -- user create/update/delete
 router.post('/create', async (req, res) => {
@@ -8,7 +8,13 @@ router.post('/create', async (req, res) => {
         const user = await User.create(req.body);
         // add a catch for the error when a user with this email already exists
         // sending back the user object only for testing purposes
-        res.status(200).json(user);
+        req.session.save(() => {
+            req.session.user_id = user.id;
+            req.session.logged_in = true;
+
+            res.status(200).json(user);
+        });
+        
     } catch (err) {
         res.status(500).json(err);
     }
