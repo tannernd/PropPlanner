@@ -15,7 +15,7 @@ router.get('/reports/:id', async (req, res, next) => {
         const propertyObj =  new PropertyObj(propertyData);
         const propertyReports = propertyObj.getAllReports();
         console.log(propertyReports);
-        res.render({layout:'reports'},{propertyReports});
+        res.render('reports',{ layout: false, propertyReports });
     });
 })
 
