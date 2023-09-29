@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth')
 
 // Homepage Route
 router.get('/', (req, res, next) => {
-  res.render('home');
+  res.render('home', {loggedIn: req.session.logged_in});
 });
 
 // Reports Route
@@ -19,7 +19,7 @@ router.get('/reports/:id', async (req, res, next) => {
       //create a new PropertyOject and run the getAllReports method to get the object with the reports data
       const propertyObj =  new PropertyObj(propertyData);
       const propertyReports = propertyObj.getAllReports();
-      res.render('reports',{ layout: false, propertyReports });
+      res.render('reports',{ layout: false, propertyReports, loggedIn: req.session.logged_in });
     });
 });
 
@@ -32,13 +32,14 @@ router.get('/addproperty', withAuth, async (req, res, next) => {
 router.get('/dashboard', withAuth, async (req, res, next) => { 
     const properties = Property.findAll({where: {user_id:req.session.user_id}})
     .then( (property) => {
-      let propertyData = {};
+      let propertyData = [];
       if (property === undefined || property.length === 0) {
-        propertyData = {};
+        propertyData = [];
       } else {
-        propertyData = property.get({plain:true});
+        propertyData = property.map((prop) => prop.get({ plain: true }));
+      
       }      
-      res.render('dashboard', {propertyData});
+      res.render('dashboard', {propertyData, loggedIn: req.session.logged_in});
     });
 });
 
@@ -52,6 +53,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//Signup route
 router.get('/signup', (req, res) => {
   // If a session exists, redirect the request to the dashboard
   if (req.session.logged_in) {
