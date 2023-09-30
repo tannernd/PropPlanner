@@ -1,9 +1,9 @@
 <h4>Property Info</h4>
-    <div class="col-md-6">
+    <div class="col-md-3">
         <label for="property_name" class="form-label">Property Name</label>
         <input type="text" class="form-control" id="property_name" name="name" value="{{propertyData.name}}">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
         <label for="property_type" class="form-label">Property Type</label>
         <select class="form-select" id="property_type" name="type">
             <option selected value="Single Family">Single Family</option>
@@ -20,6 +20,14 @@
             <option value="Other">Other</option>
         </select>
     </div>
+    <div class="col-3">
+        <label for="year_built" class="form-label">Year Built</label>
+        <input type="number" class="form-control" id="year_built"  name="year_built" step="1">
+    </div>
+    <div class="col-3">
+        <label for="total_units" class="form-label">Total Units</label>
+        <input type="number" class="form-control" id="total_units"  name="total_units" step="1">
+    </div>  
     <div class="col-md-12">
         <label for="property_desc" class="form-label">Property Description</label>
         <textarea class="form-control" id="property_desc" name="description"></textarea>

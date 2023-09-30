@@ -5,6 +5,7 @@ const Market = require('../../../models/Market');
 // -- add an expense
 router.post('/', async (req, res) => {
     try {
+        req.body.user_id = req.session.user_id; 
         const market = await Market.create(req.body);
         const marketData = market.get({ plain: true })
 
