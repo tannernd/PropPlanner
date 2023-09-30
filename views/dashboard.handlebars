@@ -1,5 +1,41 @@
-<p>Hello World</p>
+<div class="d-flex flex-column p-3" style="width: 20rem; height: 100vh;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <a class="navbar-brand" href="#">
+            <svg width="36px" height="36px" viewBox="0 0 75 75">
+                <path id="logo" style="fill:#000;"
+                    d="m 42.486131,43.142859 h 2.115626 v 2.115639 h -2.115626 z m -2.633045,0 h 2.115626 v 2.115639 h -2.115626 z m 2.625457,-2.555936 h 2.115621 v 2.115626 h -2.115621 z m -2.633045,0 h 2.115627 v 2.115626 H 39.845498 Z M 7.1382015,31.120105 C 2.7445248,59.277117 39.785783,66.701622 60.257485,37.726648 l -5.138391,-2.936241 12.879407,-6.072692 -0.06674,14.14736 -3.002997,-2.402381 C 44.726508,75.16047 -3.8551975,62.939599 7.1382015,31.120105 Z M 42.303422,29.080028 29.552,41.831786 23.283533,35.563356 12.149009,46.696694 c 0.438162,0.444929 0.897737,0.867599 1.37839,1.267098 l 9.757324,-9.757045 4.950415,4.950397 -4.451522,4.452695 -0.66166,0.660769 1.322415,1.322138 0.660471,-0.661659 17.19858,-17.207374 10.79874,10.799298 c 0.454704,-0.417183 0.90442,-0.849781 1.350794,-1.293445 z m -22.718989,-7.649705 -6.731556,3.886478 v 18.295005 l 6.737731,-6.737734 V 23.218246 l 4.09783,2.365559 v 7.847031 l 1.453285,1.453294 V 24.639045 Z m 28.215436,-5.900137 -6.731615,3.886483 v 8.517467 l 1.313973,-1.313934 5.424044,5.424676 V 17.318114 l 4.097606,2.365559 v 16.459359 l 1.453279,1.453298 V 18.738914 Z M 33.625526,8.3541747 26.893688,12.240659 v 24.395394 l 2.735871,2.735904 4.002142,-4.001829 V 10.142104 l 4.097833,2.365559 v 18.764898 l 1.45334,-1.453296 V 11.562903 Z" />
+            </svg>
+            PropPlanner
+        </a>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a href="#" class="nav-link" aria-current="page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                </svg>
+                Properties
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+            </svg>
+            <strong>Account</strong>
+        </a>
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
+            <li><a class="dropdown-item" id="logout">Log Out</a></li>
+        </ul>
+    </div>
+</div>
 
 {{#each propertyData as |property|}}
 {{property.name}}
 {{/each}}
+
+<script src="/js/logout.js"></script>
