@@ -4,13 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/js/logout.js" defer></script>
+    <script src="/js/index.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js" integrity="sha512-rMGGF4wg1R73ehtnxXBt5mbUfN9JUJwbk21KMlnLZDJh7BkPmeovBuddZCENJddHYYMkCh9hPFnPmS9sspki8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <script src="./js/logout.js" defer></script>
-    <link rel="stylesheet" href="./css/landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" integrity="sha512-yVvxUQV0QESBt1SyZbNJMAwyKvFTLMyXSyBHDO4BG5t7k/Lw34tyqlSDlKIrIENIzCl+RVUNjmCPG+V/GMesRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/landing.css">
     <title>Landing</title>
 </head>
 <body>
-
+    <nav class="navbar justify-content-between">
+    <a class="navbar-brand" href="#">
+        <svg width="36px" height="36px" viewBox="0 0 75 75">
+            <path id="logo" style="fill:#000;"
+                d="m 42.486131,43.142859 h 2.115626 v 2.115639 h -2.115626 z m -2.633045,0 h 2.115626 v 2.115639 h -2.115626 z m 2.625457,-2.555936 h 2.115621 v 2.115626 h -2.115621 z m -2.633045,0 h 2.115627 v 2.115626 H 39.845498 Z M 7.1382015,31.120105 C 2.7445248,59.277117 39.785783,66.701622 60.257485,37.726648 l -5.138391,-2.936241 12.879407,-6.072692 -0.06674,14.14736 -3.002997,-2.402381 C 44.726508,75.16047 -3.8551975,62.939599 7.1382015,31.120105 Z M 42.303422,29.080028 29.552,41.831786 23.283533,35.563356 12.149009,46.696694 c 0.438162,0.444929 0.897737,0.867599 1.37839,1.267098 l 9.757324,-9.757045 4.950415,4.950397 -4.451522,4.452695 -0.66166,0.660769 1.322415,1.322138 0.660471,-0.661659 17.19858,-17.207374 10.79874,10.799298 c 0.454704,-0.417183 0.90442,-0.849781 1.350794,-1.293445 z m -22.718989,-7.649705 -6.731556,3.886478 v 18.295005 l 6.737731,-6.737734 V 23.218246 l 4.09783,2.365559 v 7.847031 l 1.453285,1.453294 V 24.639045 Z m 28.215436,-5.900137 -6.731615,3.886483 v 8.517467 l 1.313973,-1.313934 5.424044,5.424676 V 17.318114 l 4.097606,2.365559 v 16.459359 l 1.453279,1.453298 V 18.738914 Z M 33.625526,8.3541747 26.893688,12.240659 v 24.395394 l 2.735871,2.735904 4.002142,-4.001829 V 10.142104 l 4.097833,2.365559 v 18.764898 l 1.45334,-1.453296 V 11.562903 Z" />
+        </svg>
+        PropPlanner
+    </a>
+    {{#if loggedIn}}
+    <span>
+        <a href="/dashboard" class="btn btn-outline-primary">Dashboard</a>
+        <button class="btn btn-outline-primary" id="logout">Logout</button>
+    </span>
+    {{else}}
+    <a class="btn btn-outline-primary" href="/login">Login</a>
+    {{/if}}
+</nav>
     {{{body}}}
 
 </body>

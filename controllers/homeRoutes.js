@@ -19,29 +19,41 @@ router.get('/reports/:id', async (req, res, next) => {
       //create a new PropertyOject and run the getAllReports method to get the object with the reports data
       const propertyObj =  new PropertyObj(propertyData);
       const propertyReports = propertyObj.getAllReports();
-      res.render('reports',{ layout: false, propertyReports, loggedIn: req.session.logged_in });
+      res.render('reports',{ propertyReports, loggedIn: req.session.logged_in });
     });
 });
 
 //Add a property route
 router.get('/addproperty', withAuth, async (req, res, next) => { 
-  res.render('addproperty');
+  res.render('addproperty', {loggedIn: req.session.logged_in, user_id:req.session.user_id});
+});
+
+//View a property route
+router.get('/property/:id', withAuth, async (req, res, next) => { 
+  const property = await Property.findByPk(req.params.id,{
+    include: [{ model: Expense }, { model: Financial }, { model: Income }, { model: Market }, { model: Mortgage }]})
+  let propertyData = [];
+  if (property === undefined || property === null || property.length === 0 ) {
+    propertyData = [];
+  } else {
+    propertyData = property.get({plain:true});
+  }  
+  res.render('property', {propertyData, loggedIn: req.session.logged_in, user_id:req.session.user_id});
 });
 
 //Member Dashboard route
 router.get('/dashboard', withAuth, async (req, res, next) => { 
-    const properties = Property.findAll({where: {user_id:req.session.user_id}})
-    .then( (property) => {
+    const properties = await Property.findAll({
+      include: [{ model: Expense }, { model: Financial }, { model: Income }, { model: Market }, { model: Mortgage }]});
+      
       let propertyData = [];
-      if (property === undefined || property.length === 0) {
+      if (properties === undefined || properties.length === 0) {
         propertyData = [];
       } else {
-        propertyData = property.map((prop) => prop.get({ plain: true }));
-      
+        propertyData = properties.map((prop) => prop.get({ plain: true }));
       }      
       res.render('dashboard', {propertyData, loggedIn: req.session.logged_in});
     });
-});
 
 //Login Route
 router.get('/login', (req, res) => {

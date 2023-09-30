@@ -30,11 +30,9 @@ router.get('/:id', async (req, res) => {
 // -- add a property
 router.post('/', async (req, res) => {
     try {
+        req.body.user_id = req.session.user_id; 
         const property = await Property.create(req.body);
         const propertyData = property.get({ plain: true })
-        console.log(property)
-        console.log(propertyData)
-
         res.status(200).json(propertyData);
     } catch (err) {
         res.status(500).json(err);
