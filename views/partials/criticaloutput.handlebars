@@ -1,30 +1,276 @@
-<table class="table">
+<!--#region Property Value -->
+<table class="table table-hover table-sm">
   <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+    <tr style="position: sticky; top:0">
+      <th scope="col" style="min-width: 15rem;"></th>
+      <th scope="col" style="min-width: 7rem;">At Purchase</th>
+      <th scope="col" style="min-width: 7rem;">Year 1</th>
+      <th scope="col" style="min-width: 7rem;">Year 2</th>
+      <th scope="col" style="min-width: 7rem;">Year 3</th>
+      <th scope="col" style="min-width: 7rem;">Year 4</th>
+      <th scope="col" style="min-width: 7rem;">Year 5</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+      <td>Property Value</td>
+      {{#each propertyReports.criticalOutput.propertyValue as |propertyValue|}}
+      <td>{{formatCurrency propertyValue}}</td>
+      {{/each}}
     </tr>
   </tbody>
 </table>
+<!--#endregion-->
+
+<!--#region Income and Expenses -->
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col" style="min-width: 15rem;">Income and Expenses</th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GSI</td>
+      {{#each propertyReports.criticalOutput.GSI as |GSI|}}
+      <td>{{formatCurrency GSI}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Loss due to Vacancies</td>
+      {{#each propertyReports.criticalOutput.vacancy as |vacancy|}}
+      <td>{{formatCurrency vacancy}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Gross Operating Income</td>
+      {{#each propertyReports.criticalOutput.GOI as |GOI|}}
+      <td>{{formatCurrency GOI}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Loss due to Expenses</td>
+      {{#each propertyReports.criticalOutput.totalExpense as |totalExpense|}}
+      <td>{{formatCurrency totalExpense}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Net Operating Income (NOI)</td>
+      {{#each propertyReports.criticalOutput.NOI as |NOI|}}
+      <td>{{formatCurrency NOI}}</td>
+      {{/each}}
+    </tr>
+  </tbody>
+</table>
+<!--#endregion-->
+
+<!--#region Financial Ratios -->
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col" style="min-width: 15rem;">Financial Ratios</th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gross Multiplier</td>
+      <td>{{propertyReports.criticalOutput.grossMultiplier}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Cap Rate</td>
+      <td>{{propertyReports.criticalOutput.capRate}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Internal Rate of Return</td>
+      <td>{{propertyReports.criticalOutput.irr}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Yield</td>
+      <td>{{propertyReports.criticalOutput.yield}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Debt Coverage Ratio</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.debtCoverage as |debtCoverage|}}
+      <td>{{debtCoverage}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Loan to Value (LTV) Ratio</td>
+      {{#each propertyReports.criticalOutput.ltv as |ltv|}}
+      <td>{{limit ltv 5}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Ownership Percentage</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.ownPercent as |ownPercent|}}
+      <td>{{ownPercent}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Cash on Cash Return (BT)</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.cashOnCashBeforeTax as |cashOnCashBeforeTax|}}
+      <td>{{cashOnCashBeforeTax}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Cash on Cash Return (AT)</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.cashOnCashAfterTax as |cashOnCashAfterTax|}}
+      <td>{{cashOnCashAfterTax}}</td>
+      {{/each}}
+    </tr>
+  </tbody>
+</table>
+<!--#endregion-->
+
+<!--#region Depreciation -->
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col" style="min-width: 15rem;">Depreciation</th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Depreciable Improvements</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.costBasis as |costBasis|}}
+      <td>{{costBasis}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Depreciable Allowance</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.depreciation as |depreciation|}}
+      <td>{{depreciation}}</td>
+      {{/each}}
+    </tr>
+  </tbody>
+</table>
+<!--#endregion-->
+
+<!--#region Cash Flow -->
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col" style="min-width: 15rem;">Cash Flow</th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Before Tax Cash Flow</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.beforeTaxCashflow as |beforeTaxCashflow|}}
+      <td>{{beforeTaxCashflow}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Taxable Income</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.taxableIncome as |taxableIncome|}}
+      <td>{{taxableIncome}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Taxes Due</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.taxesDue as |taxesDue|}}
+      <td>{{taxesDue}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>After Tax Cash Flow</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.afterTaxCashflow as |afterTaxCashflow|}}
+      <td>{{afterTaxCashflow}}</td>
+      {{/each}}
+    </tr>
+  </tbody>
+</table>
+<!--#endregion-->
+
+<!--#region Rate of Return -->
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col" style="min-width: 15rem;">Rate of Return (RoR)</th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+      <th scope="col" style="min-width: 7rem;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RoR on Loan Reduction</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.rorLoanReduction as |rorLoanReduction|}}
+      <td>{{suffix (limit rorLoanReduction 5) '%'}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>RoR on Appreciation</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.rorAppreciation as |rorAppreciation|}}
+      <td>{{suffix (limit rorAppreciation 5) '%'}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>RoR on BTCF</td>
+      <td></td>
+      {{#each propertyReports.criticalOutput.rorBeforeTaxCF as |rorBeforeTaxCF|}}
+      <td>{{suffix (limit rorBeforeTaxCF 5) '%'}}</td>
+      {{/each}}
+    </tr>
+  </tbody>
+</table>
+<!--#endregion-->
