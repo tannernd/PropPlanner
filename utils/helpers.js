@@ -9,6 +9,11 @@ module.exports = {
 
     return decimals.length < 2 ? value + '0' : value;
   },
+  select:( selected, options ) => {
+    return options.fn(this).replace(
+      new RegExp(' value=\"' + selected + '\"'),
+      '$& selected="selected"');
+  },
   ipp: (index) => parseInt(index) + 1,
   limit: (value, length) => value.toString().slice(0, length),
   suffix: (value, character) => (value.toString().endsWith(character)) ? value : value.toString() + character
