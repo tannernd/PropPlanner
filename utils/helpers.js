@@ -8,6 +8,11 @@ module.exports = {
     var decimals = value.split('.')[1];
 
     return decimals.length < 2 ? value + '0' : value;
-  }
+  },
+  select:( selected, options ) => {
+    return options.fn(this).replace(
+      new RegExp(' value=\"' + selected + '\"'),
+      '$& selected="selected"');
+}
 }
  

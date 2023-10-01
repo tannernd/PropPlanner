@@ -2,6 +2,16 @@ const router = require('express').Router();
 // -- expense model
 const Expense = require('../../../models/Expense');
 
+// -- get an expense
+router.get('/:id', async (req, res) => {
+    try {
+        const expense = await Expense.findByPk(req.params.id);
+        const expenseData = expense.get({ plain: true });
+        (expenseData) ? res.status(200).json(expenseData) : res.status(400).json({msg: 'expense failed to get, check request.'});
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 // -- add an expense
 router.post('/', async (req, res) => {
     try {

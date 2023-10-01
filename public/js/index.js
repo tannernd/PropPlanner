@@ -1,4 +1,3 @@
-
 //Function to submit a property to the database
 const addPropertySubmit = async (event) => {
     event.preventDefault();

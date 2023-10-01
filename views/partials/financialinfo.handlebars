@@ -3,27 +3,27 @@
     <label for="offer_amount" class="form-label">Offer Amount</label>
     <div class="input-group">
         <span class="input-group-text">$</span>
-        <input type="number" class="form-control" id="offer_amount" name="offer_amount" step=".01">
+        <input type="number" class="form-control" id="offer_amount" name="offer_amount" step=".01" value="{{propertyData.financials.0.offer_amount}}">
     </div>
 </div>
 <div class="col-md-3">
     <label for="property_value" class="form-label">Property Value</label>
     <div class="input-group">
         <span class="input-group-text">$</span>
-        <input type="number" class="form-control" id="property_value" name="property_value" step=".01">
+        <input type="number" class="form-control" id="property_value" name="property_value" step=".01" value="{{propertyData.financials.0.property_value}}">
     </div>
 </div>
 <div class="col-md-3">
     <label for="closing_amount" class="form-label">Closing Amount</label>
     <div class="input-group">
         <span class="input-group-text">$</span>
-        <input type="number" class="form-control" id="closing_amount" name="closing_amount" step=".01">
+        <input type="number" class="form-control" id="closing_amount" name="closing_amount" step=".01" value="{{propertyData.financials.0.closing_amount}}">
     </div>
 </div>
 <div class="col-md-3">
     <label for="tax_rate" class="form-label">Tax Rate</label>
     <div class="input-group">
-        <input type="number" class="form-control" id="tax_rate" name="tax_rate" step=".01">
+        <input type="number" class="form-control" id="tax_rate" name="tax_rate" step=".01" value="{{propertyData.financials.0.tax_rate}}">
         <span class="input-group-text">%</span>
     </div>
 </div>
