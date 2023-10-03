@@ -20,7 +20,7 @@ main {
 .wrapper-splash {
     position: relative;
     display: flex;
-    height: 50rem;
+    height: 45rem;
     overflow: hidden;
 }
 
