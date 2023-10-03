@@ -1,0 +1,59 @@
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Property Income</th>
+      <th scope="col">Year 1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gross Scheduled Income</td>
+      <td class="w-25">{{formatCurrency propertyReports.apod.grossScheduledIncome}}</td>
+    </tr>
+    <tr>
+      <td>Loss due to Vacancies</td>
+      <td class="w-25">{{formatCurrency propertyReports.apod.vacancyAmt}}</td>
+    </tr>
+    <tr>
+      <td>Gross Operating Income</td>
+      <td class="w-25">{{formatCurrency propertyReports.apod.grossOperatingIncome}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Property Expenses</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if propertyReports.apod.expenses}}
+    {{#each propertyReports.apod.expenses as |expense|}}
+    <tr>
+      <td>{{expense.description}}</td>
+      <td class="w-25">{{formatCurrency expense.annual_amount}}</td>
+    </tr>
+    {{/each}}
+    {{else}}
+    <tr>
+      <td>None</td>
+      <td>NA</td>
+    </tr>
+    {{/if}}
+    <tr>
+      <th scope="col">Total Expenses</th>
+      <th scope="col" class="w-25">{{formatCurrency propertyReports.apod.totalExpensesAmt}}</th>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-hover table-sm">
+  <tfoot>
+    <tr>
+      <th scope="col">Net Operating Income</th>
+      <th scope="col" class="w-25">{{formatCurrency propertyReports.apod.netOperatingIncom}}</th>
+    </tr>
+  </tfoot>
+</table>

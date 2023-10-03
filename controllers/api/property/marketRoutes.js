@@ -5,6 +5,7 @@ const Market = require('../../../models/Market');
 // -- add an expense
 router.post('/', async (req, res) => {
     try {
+        req.body.user_id = req.session.user_id; 
         const market = await Market.create(req.body);
         const marketData = market.get({ plain: true })
 
@@ -22,7 +23,7 @@ router.put('/:id', async (req, res) => {
                 id: req.params.id,
             }
         });
-
+        console.log(market);
         (market[0]) ? res.status(200).json({msg: 'Market successfully updated.'}) : res.status(400).json({msg: 'Market failed to update, check request.'});
     } catch (err) {
         res.status(500).json(err);

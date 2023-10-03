@@ -25,6 +25,9 @@ Financial.init(
     closing_amount: {
       type: DataTypes.DECIMAL
     },
+    tax_rate: {
+      type: DataTypes.DECIMAL
+    },
     notes: {
       type: DataTypes.TEXT
     }

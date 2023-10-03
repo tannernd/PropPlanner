@@ -1,0 +1,66 @@
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col" style="min-width: 15rem;"></th>
+      <th scope="col" style="min-width: 7rem;">Year 1</th>
+      <th scope="col" style="min-width: 7rem;">Year 2</th>
+      <th scope="col" style="min-width: 7rem;">Year 3</th>
+      <th scope="col" style="min-width: 7rem;">Year 4</th>
+      <th scope="col" style="min-width: 7rem;">Year 5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Net Operating Income (NOI)</td>
+      {{#each propertyReports.cashflow.noi as |noi|}}
+      <td>{{formatCurrency noi}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Debt Service</td>
+      {{#each propertyReports.cashflow.debtService as |debtService|}}
+      <td>{{formatCurrency debtService}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Before Tax Cashflow</td>
+      {{#each propertyReports.cashflow.beforeTaxCashflow as |beforeTaxCashflow|}}
+      <td>{{formatCurrency beforeTaxCashflow}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Depreciable Allowance</td>
+      {{#each propertyReports.cashflow.depreciableAllowance as |depreciableAllowance|}}
+      <td>{{formatCurrency depreciableAllowance}}</td>
+      {{/each}}
+    </tr>
+    {{#if propertyReports.cashflow.mortgageInterest}}
+    {{#each propertyReports.cashflow.mortgageInterest as |mortgageInterestArray index|}}
+    <tr>
+      <td>Mortgage {{ipp index}} Interest</td>
+      {{#each mortgageInterestArray as |mortgageInterestValue|}}
+      <td>{{formatCurrency mortgageInterestValue}}</td>
+      {{/each}}
+    </tr>
+    {{/each}}
+    {{/if}}
+    <tr>
+      <td>Taxable Income</td>
+      {{#each propertyReports.cashflow.taxableIncome as |taxableIncome|}}
+      <td>{{formatCurrency taxableIncome}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <td>Taxes Due</td>
+      {{#each propertyReports.cashflow.taxesDue as |taxesDue|}}
+      <td>{{formatCurrency taxesDue}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <th scope="col">After Tax Cash Flow</th>
+      {{#each propertyReports.cashflow.AfterTaxCashflow as |AfterTaxCashflow|}}
+      <th scope="col">{{formatCurrency AfterTaxCashflow}}</th>
+      {{/each}}
+    </tr>
+  </tbody>
+</table>

@@ -1,8 +1,19 @@
 const router = require('express').Router();
-// -- expense model
+// -- mortgage model
 const Mortgage = require('../../../models/Mortgage');
 
-// -- add an expense
+// -- get a mortgage
+router.get('/:id', async (req, res) => {
+    try {
+        const mortgage = await Mortgage.findByPk(req.params.id);
+        const mortgageData = mortgage.get({ plain: true });
+        (mortgageData) ? res.status(200).json(mortgageData) : res.status(400).json({msg: 'mortgage failed to get, check request.'});
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// -- add an mortgage
 router.post('/', async (req, res) => {
     try {
         const mortgage = await Mortgage.create(req.body);
@@ -14,7 +25,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-// -- update an expense
+// -- update an mortgage
 router.put('/:id', async (req, res) => {
     try {
         const mortgage = await Mortgage.update(req.body, {
@@ -29,7 +40,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// -- delete an expense
+// -- delete an mortgage
 router.delete('/:id', async (req, res) => {
     try {
         const mortgage = await Mortgage.destroy({

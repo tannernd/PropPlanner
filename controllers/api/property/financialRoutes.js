@@ -5,6 +5,7 @@ const Financial = require('../../../models/Financial');
 // -- add a financial
 router.post('/', async (req, res) => {
     try {
+        req.body.user_id = req.session.user_id; 
         const financial = await Financial.create(req.body);
         const financialData = financial.get({ plain: true })
 

@@ -1,0 +1,326 @@
+<div class="container">
+    <div class="row">
+        <h3>{{propertyData.name}}</h3>
+    </div>
+    <div class="card row">
+        <div class="card-header d-flex">
+            <h5 class="d-flex flex-grow-1">Property Info </h5><a class="d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#propertyInfoModal" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+        </div>
+        <div class="card-body">
+            {{#if propertyData.description}}
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 fw-bold">Description:</div>
+                <div class="col-lg-9 col-sm-12">{{propertyData.description}}</div>
+            </div>
+            {{/if}}
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 fw-bold">Address:</div>
+                <div class="col-lg-9 col-sm-12">
+                    <p class="card-text" style="margin-bottom:0;">{{propertyData.address1}}</p>
+                    {{#if propertyData.address2}}
+                    <p class="card-text" style="margin-bottom:0;">{{propertyData.address2}}</p>
+                    {{/if}}
+                    <p class="card-text" style="margin-bottom:0;">{{propertyData.city}}, {{propertyData.state}} {{propertyData.zip}}</p>
+                </div>                
+            </div>          
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 fw-bold">Property Type:</div>
+                <div class="col-lg-9 col-sm-12">{{propertyData.type}}</div>
+            </div>              
+            {{#if propertyData.year}}
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 fw-bold">Year Built:</div>
+                <div class="col-lg-9 col-sm-12">{{propertyData.year}}</div>
+            </div>
+            {{/if}}            
+            {{#if propertyData.total_units}}
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 fw-bold">Total Units:</div>
+                <div class="col-lg-9 col-sm-12">{{propertyData.total_units}}</div>
+            </div>  
+            {{/if}}
+        </div>
+    </div>  
+    <div class="card row">
+        <div class="card-header d-flex">
+            <h5 class="d-flex flex-grow-1">Financials</h5><a class="d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#financialInfoModal" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 fw-bold">Offer Amount:</div>
+                <div class="col-lg-3 col-sm-12">{{formatCurrency propertyData.financials.0.offer_amount}}</div>
+                <div class="col-lg-3 col-sm-12 fw-bold">Property Value:</div>
+                <div class="col-lg-3 col-sm-12">{{formatCurrency propertyData.financials.0.property_value}}</div>
+            </div> 
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 fw-bold">Closing Amount:</div>
+                <div class="col-lg-3 col-sm-12">{{formatCurrency propertyData.financials.0.closing_amount}}</div>
+                <div class="col-lg-3 col-sm-12 fw-bold">Tax Rate:</div>
+                <div class="col-lg-3 col-sm-12">{{propertyData.financials.0.tax_rate}}%</div>
+            </div> 
+        </div>
+    </div> 
+    <div class="card row">
+        <div class="card-header d-flex">
+            <h5 class="d-flex flex-grow-1">Market Info</h5><a class="d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#marketInfoModal" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+        </div>
+        <div class="card-body">            
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 fw-bold">Appreciation:</div>
+                <div class="col-lg-3 col-sm-12">{{propertyData.markets.0.appreciation}}%</div>
+                <div class="col-lg-3 col-sm-12 fw-bold">Annual Rent Increase:</div>
+                <div class="col-lg-3 col-sm-12">{{propertyData.markets.0.annual_rent_increase}}%</div>
+            </div> 
+            <div class="row">
+                <div class="col-lg-3 col-sm-12 fw-bold">Annual Expense Increase:</div>
+                <div class="col-lg-3 col-sm-12">{{propertyData.markets.0.annual_expense_increase}}%</div>
+                <div class="col-lg-3 col-sm-12 fw-bold">Vacancy:</div>
+                <div class="col-lg-3 col-sm-12">{{propertyData.markets.0.vacancy}}%</div>
+            </div>          
+        </div>
+    </div> 
+    <div class="card row">
+        <div class="card-header d-flex">
+            <h5 class="d-flex flex-grow-1">Income</h5><a class="d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#incomeInfoModal" href="#"><i class="fa-solid fa-plus"></i></a>
+        </div>
+        <div class="card-body">
+            {{#if propertyData.incomes}}
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th></th>
+                    </tr>
+                    {{#each propertyData.incomes as |income|}}
+                    <tr>
+                        <td>{{income.description}}</td>
+                        <td>{{formatCurrency income.amount}}</td>
+                        <td><a data-income-id="{{income.id}}" data-type="income" data-bs-toggle="modal" data-bs-target="#incomeInfoModal" href="#"><i class="fa-solid fa-pen-to-square"></i></a> 
+                            <a data-income-id="{{income.id}}" data-type="income" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" href="#"><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+            {{else}}
+            <p>Please add an income</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="card row">
+        <div class="card-header d-flex">
+            <h5 class="d-flex flex-grow-1">Expenses</h5><a class="d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#expenseInfoModal" href="#"><i class="fa-solid fa-plus"></i></a>
+        </div>
+        <div class="card-body">
+            {{#if propertyData.expenses}}
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th></th>
+                    </tr>
+                    {{#each propertyData.expenses as |expense|}}
+                    <tr>
+                        <td>{{expense.description}}</td>
+                        <td>{{formatCurrency expense.amount}}</td>
+                        <td><a data-expense-id="{{expense.id}}" data-type="expense" data-bs-toggle="modal" data-bs-target="#expenseInfoModal" href="#"><i class="fa-solid fa-pen-to-square"></i></a> 
+                            <a data-expense-id="{{expense.id}}" data-type="expense" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" href="#"><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+            {{else}}
+            <p>Please add an Expense</p>
+            {{/if}}
+        </div>
+    </div>
+    <div class="card row">
+        <div class="card-header d-flex">
+            <h5 class="d-flex flex-grow-1">Mortgage</h5><a class="d-flex justify-content-end" data-bs-toggle="modal" data-bs-target="#mortgageInfoModal" href="#"><i class="fa-solid fa-plus"></i></a>
+        </div>
+        <div class="card-body">
+            {{#if propertyData.mortgages}}
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Lender</th>
+                        <th>Loan Amount</th>
+                        <th>Rate</th>
+                        <th>Term</th>
+                        <th>Payment</th>
+                        <th></th>
+                    </tr>
+                    {{#each propertyData.mortgages as |mortgage|}}
+                    <tr>
+                        <td>{{mortgage.lender}}</td>
+                        <td>{{formatCurrency mortgage.loan_amount}}</td>
+                        <td>{{mortgage.rate}}%</td>
+                        <td>{{mortgage.term}}</td>
+                        <td>{{formatCurrency mortgage.payment}}</td>
+                        <td><a data-mortgage-id="{{mortgage.id}}" data-type="mortgage" data-bs-toggle="modal" data-bs-target="#mortgageInfoModal" href="#"><i class="fa-solid fa-pen-to-square"></i></a> 
+                            <a data-mortgage-id="{{mortgage.id}}" data-type="mortgage" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" href="#"><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+            {{else}}
+            <p>Please add a Mortgage</p>
+            {{/if}}
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<!-- Property Info Modal -->
+<div class="modal fade" id="propertyInfoModal" tabindex="-1" aria-labelledby="propertyInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideout">
+    <div class="modal-content">
+      <div class="modal-header d-flex">
+        <h5 class="modal-title d-flex justify-content-start" id="exampleModalLabel">Property Info</h5>
+        <button type="button" class="btn-close d-flex justify-content-end" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="add-property-info" class="row g-4">
+            {{> propertyinfo}}
+            <div class="col-12">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Financial Info Modal -->
+<div class="modal fade" id="financialInfoModal" tabindex="-1" aria-labelledby="financialInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideout">
+    <div class="modal-content">
+      <div class="modal-header d-flex">
+        <h5 class="modal-title d-flex justify-content-start" id="exampleModalLabel">Financial Info</h5>
+        <button type="button" class="btn-close d-flex justify-content-end" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="add-financial-info" class="row g-4">
+            {{> financialinfo}}            
+            <input type="hidden" class="form-control" id="financial_id" name="financial_id" value="{{propertyData.financials.0.id}}">   
+            <div class="col-12">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Market Info Modal -->
+<div class="modal fade" id="marketInfoModal" tabindex="-1" aria-labelledby="marketInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideout">
+    <div class="modal-content">
+      <div class="modal-header d-flex">
+        <h5 class="modal-title d-flex justify-content-start" id="exampleModalLabel">Market Info</h5>
+        <button type="button" class="btn-close d-flex justify-content-end" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="add-market-info" class="row g-4">
+            {{> marketinfo}}            
+            <input type="hidden" class="form-control" id="market_id" name="market_id" value="{{propertyData.markets.0.id}}">   
+            <div class="col-12">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Income Info Modal -->
+<div class="modal fade" id="incomeInfoModal" tabindex="-1" aria-labelledby="incomeInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideout">
+    <div class="modal-content">
+      <div class="modal-header d-flex">
+        <h5 class="modal-title d-flex justify-content-start" id="exampleModalLabel">Income</h5>
+        <button type="button" class="btn-close d-flex justify-content-end" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="add-income-info" class="row g-4">
+            {{> incomeinfo}}            
+            <input type="hidden" class="form-control" id="income_id" name="income_id" value="">   
+            <div class="col-12">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Expense Info Modal -->
+<div class="modal fade" id="expenseInfoModal" tabindex="-1" aria-labelledby="expenseInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideout">
+    <div class="modal-content">
+      <div class="modal-header d-flex">
+        <h5 class="modal-title d-flex justify-content-start" id="exampleModalLabel">Expense</h5>
+        <button type="button" class="btn-close d-flex justify-content-end" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="add-expense-info" class="row g-4">
+            {{> expenseinfo}}            
+            <input type="hidden" class="form-control" id="expense_id" name="expense_id" value="">   
+            <div class="col-12">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- mortgage Info Modal -->
+<div class="modal fade" id="mortgageInfoModal" tabindex="-1" aria-labelledby="mortgageInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideout">
+    <div class="modal-content">
+      <div class="modal-header d-flex">
+        <h5 class="modal-title d-flex justify-content-start" id="exampleModalLabel">Mortgage</h5>
+        <button type="button" class="btn-close d-flex justify-content-end" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="add-mortgage-info" class="row g-4">
+            {{> mortgageinfo}}            
+            <input type="hidden" class="form-control" id="mortgage_id" name="mortgage_id" value="">   
+            <div class="col-12">
+                <button type="submit" id="mortgage_submit" class="btn btn-outline-primary">Submit</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirm Modal -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-small">
+    <div class="modal-content">
+      <div class="modal-header d-flex">
+        <h5 class="modal-title d-flex justify-content-start" id="exampleModalLabel">Delete</h5>
+        <button type="button" class="btn-close d-flex justify-content-end" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="delete-info" class="row g-4">  
+            <p>Are you sure you want to delete?</p>          
+            <input type="hidden" class="form-control" id="id" name="id" value="">               
+            <input type="hidden" class="form-control" id="type" name="type" value="">
+            <div class="col-12">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="submit" class="btn btn-outline-primary">Yes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/property.js"></script>  
