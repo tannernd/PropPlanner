@@ -44,7 +44,7 @@ router.get('/property/:id', withAuth, async (req, res, next) => {
 //Member Dashboard route
 router.get('/dashboard', withAuth, async (req, res, next) => { 
     const properties = await Property.findAll({
-      include: [{ model: Expense }, { model: Financial }, { model: Income }, { model: Market }, { model: Mortgage }]});
+      include: [{ model: Expense }, { model: Financial }, { model: Income }, { model: Market }, { model: Mortgage }], where:{user_id:req.session.user_id}});
       
       let propertyData = [];
       if (properties === undefined || properties.length === 0) {
