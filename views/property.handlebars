@@ -1,8 +1,59 @@
-<div class="container">
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+    }
+
+    .wrapper {
+        padding-top: 2rem;
+        width: 1500px;
+    }
+
+    .wrapper a {
+      text-decoration: none;
+      padding: 0.5rem 0;
+    }
+
+    .card-header {
+      background-color: #007bff;
+      border: 1px solid #007bff;
+      color: #fff;
+      padding-top: 1rem;
+    }
+
+    .card-header i {
+      position: relative;
+      bottom: 0.25em;
+      right: 0.5em;
+      color: #fff;
+    }
+
+    .card {
+      border: none;
+      border-bottom: 1px solid #007bff;
+      overflow: hidden;
+      border-radius: 5px;
+    }
+
+    .card-body {
+      border-left: 1px solid #007bff;
+      border-right: 1px solid #007bff;
+    }
+
+    @media screen and (max-width: 1500px) {
+        .wrapper {
+            width: 90vw;
+        }
+    }
+</style>
+<main>
+
+
+<div class="wrapper">
   <div class="row">
     <div class="d-flex">
         <h3 class="d-flex flex-grow-1">{{propertyData.name}}</h3>                
-        <a style="color:#0FBBB3;" class="d-flex justify-content-end" href="/reports/{{propertyData.id}}"><i class="fa-regular fa-file-lines fa-2x"></i></a>
+        <a style="color:#007bff;" class="d-flex justify-content-end" href="/reports/{{propertyData.id}}">View Report <i class="fa-regular fa-file-lines" style="padding-left: 0.5em; position: relative; top: 0.25em;"></i></a>
     </div>
   </div>
     <div class="card row">
@@ -302,6 +353,7 @@
     </div>
   </div>
 </div>
+</main>
 
 {{> deletemodal}}
 
