@@ -39,3 +39,33 @@
   input:read-only {
     background-color: rgb(194, 193, 193);
   }
+.h-flex {
+display: flex;
+}
+.h2-flex{
+    justify-content: space-between;
+}
+.logo-img{
+    size: auto;
+}
+/* .nav{
+    max-height: 50px;
+} */
+.au-padding{
+    padding: 70px;
+}
+.sign-in-card{
+    max-width: 300px;
+}
+.s-card{
+padding: 20px;
+}
+/* .nav-c{
+  color: #ffffff;
+} */
+.img-bar{
+  width: 100vw;
+  height: 75vw;
+  display: flex;
+  justify-content: center;
+}
