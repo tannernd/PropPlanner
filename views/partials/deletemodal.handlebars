@@ -1,0 +1,22 @@
+<!-- Delete Confirm Modal -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-small">
+    <div class="modal-content">
+      <div class="modal-header d-flex">
+        <h5 class="modal-title d-flex justify-content-start" id="exampleModalLabel">Delete</h5>
+        <button type="button" class="btn-close d-flex justify-content-end" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="delete-info" class="row g-4">  
+            <p>Are you sure you want to delete?</p>          
+            <input type="hidden" class="form-control" id="id" name="id" value="">               
+            <input type="hidden" class="form-control" id="type" name="type" value="">
+            <div class="col-12">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="submit" class="btn btn-outline-primary">Yes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

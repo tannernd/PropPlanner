@@ -77,8 +77,38 @@ const addPropertySubmit = async (event) => {
     }
     
 };
+// function to delete a submitted item
+const deleteSubmit = async (event) => {
+    event.preventDefault();  
+    const id = $('#id').val()
+    const deleteType = $('#type').val();    
+    const pathArray = window.location.pathname.split('/');
+
+    const deleteResponse = await fetch('/api/property/'+id, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    });       
+    //If response is Ok, then redirect to the property listing page. 
+    if (deleteResponse.ok) {
+    document.location.replace('/dashboard');
+    } else {
+    alert('Failed delete nfo.');
+    }
+}
+//Function to set the hidden input values.
+const setDeleteData = async (event) => {
+    console.log(event.relatedTarget.dataset);
+    $('#id').val(event.relatedTarget.dataset.propertyId);
+    $('#type').val('property');       
+};
+
 if(window.location.pathname === '/addproperty') {
     $('#property_type').chosen({width: "100%"});
     $('#state').chosen({width: "100%"});
     document.querySelector('#add-property').addEventListener('submit',addPropertySubmit);
+}
+
+if(window.location.pathname === '/dashboard') {
+    document.querySelector('#deleteConfirmModal').addEventListener('show.bs.modal', setDeleteData);
+    document.querySelector('#delete-info').addEventListener('submit',deleteSubmit);
 }
