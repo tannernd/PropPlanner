@@ -10,8 +10,9 @@
             <th>Offer Amount</th>
             <th>Market Value</th>
             <th>Reports</th>
+            <th></th>
         </tr>
-        
+            {{#if propertyData}}
             {{#each propertyData as |property|}}
         <tr>
             <td><a href="/property/{{property.id}}">{{property.name}}</td></a>
@@ -20,10 +21,15 @@
             <td>{{property.state}}</td>        
             <td>{{formatCurrency property.financials.0.offer_amount}}</td>
             <td>{{formatCurrency property.financials.0.property_value}}</td>
-            <td><a href="/reports/{{property.id}}"><i class="fa-regular fa-file-lines"></i></a></td>
+            <td><a style="color:#0FBBB3;" href="/reports/{{property.id}}"><i class="fa-regular fa-file-lines"></i></a></td>
+            <td><a data-property-id="{{property.id}}" data-type="property" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal" href="#"><i class="fa-solid fa-trash"></i></a></td>
         </tr>
-            {{/each}}        
+            {{/each}}  
+            {{else}}
+            <td colspan="8">Please enter a property.</td>  
+            {{/if}}    
     </table>
     </div>
 </div>
 
+{{> deletemodal}}
