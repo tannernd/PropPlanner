@@ -134,7 +134,7 @@ const addIncomeSubmit = async (event) => {
         if (incomeResponse.ok) {
         document.location.replace('/property/'+pathArray[2]);
         } else {
-        alert('Failed save market info.');
+        alert('Failed save income info.');
         }
     } else {
         const incomeResponse = await fetch('/api/property/income/'+incomeId, {
@@ -146,7 +146,7 @@ const addIncomeSubmit = async (event) => {
         if (incomeResponse.ok) {
         document.location.replace('/property/'+pathArray[2]);
         } else {
-        alert('Failed save market info.');
+        alert('Failed save income info.');
         }
     }
 }
@@ -177,7 +177,7 @@ const addExpenseSubmit = async (event) => {
         if (expenseResponse.ok) {
         document.location.replace('/property/'+pathArray[2]);
         } else {
-        alert('Failed save market info.');
+        alert('Failed save expense info.');
         }
     } else {
         const expenseResponse = await fetch('/api/property/expense/'+expenseId, {
@@ -226,7 +226,7 @@ const addMortgageSubmit = async (event) => {
         if (mortgageResponse.ok) {
         document.location.replace('/property/'+pathArray[2]);
         } else {
-        alert('Failed save market info.');
+        alert('Failed save mortgage info.');
         }
     } else {
         const mortgageResponse = await fetch('/api/property/mortgage/'+mortgageId, {
@@ -238,11 +238,11 @@ const addMortgageSubmit = async (event) => {
         if (mortgageResponse.ok) {
         document.location.replace('/property/'+pathArray[2]);
         } else {
-        alert('Failed save market info.');
+        alert('Failed save mortgage info.');
         }
     }
 }
-
+// function to delete a submitted item
 const deleteSubmit = async (event) => {
     const id = $('#id').val()
     const deleteType = $('#type').val();    
@@ -256,7 +256,7 @@ const deleteSubmit = async (event) => {
     if (deleteResponse.ok) {
     document.location.replace('/property/'+pathArray[2]);
     } else {
-    alert('Failed save market info.');
+    alert('Failed delete nfo.');
     }
 }
 
@@ -303,7 +303,8 @@ const getExpenseData = async (event) => {
         $("#expense_desc").trigger("chosen:updated");
     }
 };
-
+//Function to check if the payment amount has been populated and if so, 
+//enable the submit button
 const paymentCheck = () => {
     if( $("#payment").val() == '') {
         $('#mortgage_submit').attr('disabled', 'disabled');
@@ -335,7 +336,7 @@ const getMortgageData = async (event) => {
     }
     paymentCheck();
 };
-
+//function to calculate the mortgage payment.
 const mortgageCalc = () => {
     const loanAmount = $("#loan_amount").val();
     const rate = $("#rate").val();
