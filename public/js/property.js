@@ -42,7 +42,7 @@ const addPropertyInfoSubmit = async (event) => {
     }
 };
 
-//Function to update finanicals
+//Function to update financials
 const addFinancialInfoSubmit = async (event) => {
     event.preventDefault();    
     const pathArray = window.location.pathname.split('/');
@@ -109,7 +109,8 @@ const addMarketInfoSubmit = async (event) => {
 };
 
 //Function to add income data
-const addIncomeSubmit = async (event) => {    
+const addIncomeSubmit = async (event) => {  
+    event.preventDefault();  
     const pathArray = window.location.pathname.split('/');
     const incomeDesc = $('#income_desc').val();
     const incomeAmount = $('#income_amount').val();
@@ -153,6 +154,7 @@ const addIncomeSubmit = async (event) => {
 
 //Function to add expense data
 const addExpenseSubmit = async (event) => {    
+    event.preventDefault();  
     const pathArray = window.location.pathname.split('/');
     const expenseDesc = $('#expense_desc').val();
     const expenseAmount = $('#expense_amount').val();
@@ -195,7 +197,8 @@ const addExpenseSubmit = async (event) => {
 }
 
 //Function to add income data
-const addMortgageSubmit = async (event) => {    
+const addMortgageSubmit = async (event) => {   
+    event.preventDefault();   
     const pathArray = window.location.pathname.split('/');
     const lender = $("#lender").val();
     const loanAmount = $("#loan_amount").val();
@@ -244,6 +247,7 @@ const addMortgageSubmit = async (event) => {
 }
 // function to delete a submitted item
 const deleteSubmit = async (event) => {
+    event.preventDefault();  
     const id = $('#id').val()
     const deleteType = $('#type').val();    
     const pathArray = window.location.pathname.split('/');
