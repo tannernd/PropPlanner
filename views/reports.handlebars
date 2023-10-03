@@ -1,39 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <style>
+    main {
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      padding: 2rem;
+      padding-bottom: 3rem;
+      margin: 2rem 0;
+      width: 1500px;
+    }
+
+    @media screen and (max-width: 1500px) {
+      .card {
+        width: 90vw;
+      }
+    }
+  </style>
   <title>Reports</title>
 </head>
 
 <body>
-  <div class="card p-3 m-3" style="overflow-x: auto;">
-  <ul class="nav nav-pills mb-3" id="report-tabs" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="apod-tab" data-bs-toggle="pill" data-bs-target="#apod" type="button" role="tab" aria-controls="apod" aria-selected="true">APOD</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="cashflow-tab" data-bs-toggle="pill" data-bs-target="#cashflow" type="button" role="tab" aria-controls="cashflow" aria-selected="false">Cashflow</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="critical-output-tab" data-bs-toggle="pill" data-bs-target="#critical-output" type="button" role="tab" aria-controls="critical-output" aria-selected="false">Critical Output</button>
-    </li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane fade show active" id="apod" role="tabpanel" aria-labelledby="apod-tab">
-      {{> apod}}
+  <main>
+    <div class="card" style="overflow-x: auto;">
+      <ul class="nav nav-pills mb-3" id="report-tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="apod-tab" data-bs-toggle="pill" data-bs-target="#apod" type="button"
+            role="tab" aria-controls="apod" aria-selected="true">APOD</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="cashflow-tab" data-bs-toggle="pill" data-bs-target="#cashflow" type="button"
+            role="tab" aria-controls="cashflow" aria-selected="false">Cashflow</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="critical-output-tab" data-bs-toggle="pill" data-bs-target="#critical-output"
+            type="button" role="tab" aria-controls="critical-output" aria-selected="false">Critical Output</button>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="apod" role="tabpanel" aria-labelledby="apod-tab">
+          {{> apod}}
+        </div>
+        <div class="tab-pane fade" id="cashflow" role="tabpanel" aria-labelledby="cashflow-tab">
+          {{> cashflow}}
+        </div>
+        <div class="tab-pane fade" id="critical-output" role="tabpanel" aria-labelledby="critical-output-tab">
+          {{> criticaloutput}}
+        </div>
+      </div>
     </div>
-    <div class="tab-pane fade" id="cashflow" role="tabpanel" aria-labelledby="cashflow-tab">
-      {{> cashflow}}
-    </div>
-    <div class="tab-pane fade" id="critical-output" role="tabpanel" aria-labelledby="critical-output-tab">
-      {{> criticaloutput}}
-    </div>
-  </div>
-  </div>
+  </main>
 </body>
 
 </html>
