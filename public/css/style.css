@@ -139,3 +139,9 @@ nav .nav-link:hover {
 .modal-dialog {
   background: #212529;
 }
+
+@media screen and (max-width: 1000px) {
+  body {
+    padding-top: 0 !important;
+  }
+}

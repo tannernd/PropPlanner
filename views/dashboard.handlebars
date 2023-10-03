@@ -8,9 +8,15 @@
         padding-top: 2rem;
         width: 1500px;
     }
-   
+
     i {
         color: #007bff;
+    }
+
+    .card {
+        margin-top: 1rem;
+        padding: 1rem;
+        overflow: scroll;
     }
 
     @media screen and (max-width: 1500px) {
@@ -18,42 +24,55 @@
             width: 90vw;
         }
     }
+
+    @media screen and (max-width: 1000px) {
+        .wrapper {
+            font-size: 0.75rem;
+        }
+    }
 </style>
 
 <main>
     <div class="wrapper">
-        <h3 style="display: inline;">Property List</h3><a class="ps-3" href="/addproperty"><i class="fa-solid fa-house-medical" style="position: relative; bottom: 0.15em; font-size: 1.25rem"></i></a>
-        <table class="table">
-            <tr>
-                <th>Property Name</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Offer Amount</th>
-                <th>Market Value</th>
-                <th>Reports</th>
-                <th></th>
-            </tr>
-            {{#if propertyData}}
-            {{#each propertyData as |property|}}
-            <tr>
-                <td><a href="/property/{{property.id}}" style="text-decoration: none; color:#007bff;">{{property.name}}</td></a>
-                <td>{{property.address1}}</td>
-                <td>{{property.city}}</td>
-                <td>{{property.state}}</td>
-                <td>{{formatCurrency property.financials.0.offer_amount}}</td>
-                <td>{{formatCurrency property.financials.0.property_value}}</td>
-                <td><a style="color:#0FBBB3;" href="/reports/{{property.id}}"><i
-                            class="fa-regular fa-file-lines"></i></a>
-                </td>
-                <td><a data-property-id="{{property.id}}" data-type="property" data-bs-toggle="modal"
-                        data-bs-target="#deleteConfirmModal" href="#"><i class="fa-solid fa-trash" style="color: #dc3545;"></i></a></td>
-            </tr>
-            {{/each}}
-            {{else}}
-            <td colspan="8">Please enter a property.</td>
-            {{/if}}
-        </table>
+        <h3 style="display: inline;">Property List</h3><a class="ps-3" href="/addproperty"><i
+                class="fa-solid fa-house-medical"
+                style="position: relative; bottom: 0.15em; font-size: 1.25rem"></i></a>
+        <div class="card">
+            <table class="table">
+                <tr>
+                    <th>Property Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Offer Amount</th>
+                    <th>Market Value</th>
+                    <th>Reports</th>
+                    <th></th>
+                </tr>
+                {{#if propertyData}}
+                {{#each propertyData as |property|}}
+                <tr>
+                    <td><a href="/property/{{property.id}}"
+                            style="text-decoration: none; color:#007bff;">{{property.name}}
+                    </td></a>
+                    <td>{{property.address1}}</td>
+                    <td>{{property.city}}</td>
+                    <td>{{property.state}}</td>
+                    <td>{{formatCurrency property.financials.0.offer_amount}}</td>
+                    <td>{{formatCurrency property.financials.0.property_value}}</td>
+                    <td><a style="color:#0FBBB3;" href="/reports/{{property.id}}"><i
+                                class="fa-regular fa-file-lines"></i></a>
+                    </td>
+                    <td><a data-property-id="{{property.id}}" data-type="property" data-bs-toggle="modal"
+                            data-bs-target="#deleteConfirmModal" href="#"><i class="fa-solid fa-trash"
+                                style="color: #dc3545;"></i></a></td>
+                </tr>
+                {{/each}}
+                {{else}}
+                <td colspan="8">Please enter a property.</td>
+                {{/if}}
+            </table>
+        </div>
     </div>
 </main>
 

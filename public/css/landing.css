@@ -20,7 +20,7 @@ main {
 .wrapper-splash {
     position: relative;
     display: flex;
-    height: 50vh;
+    height: 50rem;
     overflow: hidden;
 }
 
@@ -101,4 +101,28 @@ section {
 .footer-link-list a:hover {
     text-decoration: none;
     color: #fff;
+}
+
+@media screen and (max-width: 1000px) {
+    .wrapper-splash {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    #report-img {
+        display: none;
+    }
+    .banner {
+        width: 90vw;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    .footer {
+        font-size: 0.75rem;
+        padding: 4rem 1rem;
+    }
 }
