@@ -2,5 +2,19 @@
 display: flex;
 }
 .h2-flex{
-    flex-direction: row;
+    justify-content: space-between;
+}
+.logo-img{
+    size: auto;
+}
+/* .nav{
+    max-height: 50px;
+} */
+.au-padding{
+    padding: 70px;
+}
+.sign-in-card{
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
 }
