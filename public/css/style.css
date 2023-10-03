@@ -56,6 +56,16 @@ display: flex;
 }
 .sign-in-card{
     max-width: 300px;
-    display: flex;
-    justify-content: center;
+}
+.s-card{
+padding: 20px;
+}
+/* .nav-c{
+  color: #ffffff;
+} */
+.img-bar{
+  width: 100vw;
+  height: 75vw;
+  display: flex;
+  justify-content: center;
 }
