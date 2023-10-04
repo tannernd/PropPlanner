@@ -1,5 +1,5 @@
 
-![logo](public/Images/logo.png/img/logo_dark.png)
+![logo](public/Images/logo.png)
 ​
 # PropPlanner Description
 
@@ -19,7 +19,7 @@ After filling in all of your inputs, click the reports button either in the prop
 ​These reports generated are designed to give you a real impression for your decision making process.
 
 ## Core Contributors
-- [Nate Tanner](https://github.com/)
+- [Nate Tanner](https://github.com/tannernd)
 - [Jared Boehm](https://github.com/JaredBoehm)
 - [Nick](https://github.com/)
 - [Eden Lewis](https://github.com/)
@@ -36,6 +36,5 @@ PropPlanner is a resource for accurate information, and acts as a central locati
 ## Screenshots
 ​
 ![Landing Page](public\Images\Homescreenshot1.png)
-![Landing Page Lower](public\Images\Homescreenshot2.png)
 ![Landing Page Lower](public\Images\Homescreenshot2.png)
 ​
